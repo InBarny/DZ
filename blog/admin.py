@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Category, Post, lick, Coment, Donat
+from .models import Category, Post, Like, Coment, Donat
 
 
 @admin.register(Category)
@@ -16,7 +16,7 @@ class PostAdmin(admin.ModelAdmin):
 class Comment(admin.ModelAdmin):
     ...
 
-@admin.register(lick)
+@admin.register(Like)
 class Reaction(admin.ModelAdmin):
     ...
 

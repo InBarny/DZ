@@ -73,14 +73,16 @@ class Coment(models.Model):
     )
 
     created_at = models.DateTimeField(
-        verbose_name="Дата создания"
+        verbose_name="Дата создания",
+        auto_now_add=True
     )
 
     parent_comment = models.ForeignKey(
         verbose_name="Родительский комментарий",
         to='self',
         on_delete=models.CASCADE,
-        null = True
+        null = True,
+        blank=True
     )
 
     def __str__(self):
@@ -91,23 +93,20 @@ class Coment(models.Model):
         verbose_name_plural = "Комментарии"
 
 
-class lick (models.Model):
+class Like (models.Model):
     post = models.ForeignKey(
         verbose_name="Публикация",
         to='Post',
         on_delete=models.CASCADE
 )
     created_at = models.DateTimeField(
-        verbose_name="Дата создания"
+        verbose_name="Дата создания",
+        auto_now_add=True
 )
-    estimation = (
-        (1, 'лайк'),
-        (2, 'нелайк')
-    )
-
     reaction = models.IntegerField(
-        verbose_name="Реакция",
-        choices=estimation
+        choices=[(1, 'Like'),
+        (-1, 'Dislike')],
+        verbose_name="Реакция"
     )
 
     def __str__(self):
